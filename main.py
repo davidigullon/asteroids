@@ -27,6 +27,7 @@ def main():
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     field = AsteroidField()
+    
 
     dt = 0
 
@@ -42,6 +43,14 @@ def main():
                 print("Game Over!")
                 pygame.quit()
                 return
+            
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collisionCheck(shot):
+                    asteroid.split()
+                    shot.kill()
+            
+        
             
         
 
